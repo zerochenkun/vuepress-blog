@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>闭包 | 陈有味的博客</title>
+    <meta name="generator" content="VuePress 1.4.1">
+    
+    <meta name="description" content="">
+    <link rel="preload" href="/assets/css/0.styles.394bce0c.css" as="style"><link rel="preload" href="/assets/js/app.75c152cd.js" as="script"><link rel="preload" href="/assets/js/2.2fae5650.js" as="script"><link rel="preload" href="/assets/js/8.97018c27.js" as="script"><link rel="prefetch" href="/assets/js/10.b2eec772.js"><link rel="prefetch" href="/assets/js/11.5c00fcf9.js"><link rel="prefetch" href="/assets/js/12.ffc6871e.js"><link rel="prefetch" href="/assets/js/13.22305f9f.js"><link rel="prefetch" href="/assets/js/14.7792e3ef.js"><link rel="prefetch" href="/assets/js/15.267b5919.js"><link rel="prefetch" href="/assets/js/16.302d65de.js"><link rel="prefetch" href="/assets/js/3.5227e26a.js"><link rel="prefetch" href="/assets/js/4.dd947af9.js"><link rel="prefetch" href="/assets/js/5.527d9ade.js"><link rel="prefetch" href="/assets/js/6.de0a62a7.js"><link rel="prefetch" href="/assets/js/7.f2726175.js"><link rel="prefetch" href="/assets/js/9.4cd96d88.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.394bce0c.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">陈有味的博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/tech/interview/my-blog.html" class="nav-link">
+  技术文档
+</a></div><div class="nav-item"><a href="https://juejin.im/user/5cfb6de251882571c37f17aa/posts" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  掘金主页
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/tech/interview/my-blog.html" class="nav-link">
+  技术文档
+</a></div><div class="nav-item"><a href="https://juejin.im/user/5cfb6de251882571c37f17aa/posts" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  掘金主页
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <!----> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="闭包"><a href="#闭包" class="header-anchor">#</a> 闭包</h1> <h3 id="定义"><a href="#定义" class="header-anchor">#</a> 定义</h3> <p>当内部函数被保存到外部时，将会生成闭包。闭包会导致原有作用域链不释放，造成内存泄露。</p> <h3 id="闭包的作用"><a href="#闭包的作用" class="header-anchor">#</a> 闭包的作用</h3> <p>1.实现公有变量
+eg：函数累加器</p> <p>2.可以做缓存（存储结构）</p> <p>3.可以实现封装，属性私有化</p> <p>4.模块化开发，防止污染全局变量
+下面是一个有趣的函数：</p> <div class="language- extra-class"><pre class="language-text"><code>function test() {
+    var arr = []
+    for (var i = 0; i &lt; 10; i++) {
+        arr[i] = function () {
+            console.log(i);
+        }
+    }
+return  arr
+}
+
+var myArr = test();
+for (var j=0;j&lt;10;j++){
+    myArr[j]();
+}
+// 10 个 10
+</code></pre></div><p>但是我们想要分别打印 i 从 0到 9，可以用立即执行函数解决，</p> <div class="language- extra-class"><pre class="language-text"><code>function test() {
+    var arr = []
+    for (var i = 0; i &lt; 10; i++) {
+        (function (j) {
+            arr[j] = function () {
+                console.log(j + &quot; &quot;)
+            }
+        }(i));
+    }
+    return arr;
+}
+
+var myArr = test();
+for (var j = 0; j &lt; 10; j++) {
+    myArr[j]();
+}
+</code></pre></div><p>当然在 ES 6以后，我们也可以直接将 用 let 解决</p> <hr> <blockquote><p>下面是一个更有意思的示例 — makeAdder 函数：</p></blockquote> <blockquote><div class="language- extra-class"><pre class="language-text"><code>function makeAdder(x) {
+ return function(y) {
+   return x + y;
+ };
+}
+
+var add5 = makeAdder(5);
+var add10 = makeAdder(10);
+
+console.log(add5(2));  // 7
+console.log(add10(2)); // 12
+</code></pre></div><p>在这个示例中，我们定义了 makeAdder(x) 函数，它接受一个参数 x ，并返回一个新的函&gt;数。返回的函数接受一个参数 y，并返回x+y的值。</p> <p>从本质上讲，makeAdder 是一个函数工厂 — 他创建了将指定的值和它的参数相加求和的函&gt;数。在上面的示例中，我们使用函数工厂创建了两个新函数 — 一个将其参数和 5 求和，另一&gt;个和 10 求和。</p> <p>add5 和 add10 都是闭包。它们共享相同的函数定义，但是保存了不同的词法环境。在 &gt;add5 的环境中，x 为 5。而在 add10 中，x 则为 10。</p> <h3 id="实用的闭包"><a href="#实用的闭包" class="header-anchor">#</a> 实用的闭包</h3> <p>闭包很有用，因为它允许将函数与其所操作的某些数据（环境）关联起来。这显然类似于面向对&gt;象编程。在面向对象编程中，对象允许我们将某些数据（对象的属性）与一个或者多个方法相关&gt;联。</p> <p>因此，通常你使用只有一个方法的对象的地方，都可以使用闭包。</p></blockquote> <blockquote><p>[节选自mdn]<br></p><hr><p></p></blockquote></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.75c152cd.js" defer></script><script src="/assets/js/2.2fae5650.js" defer></script><script src="/assets/js/8.97018c27.js" defer></script>
+  </body>
+</html>
